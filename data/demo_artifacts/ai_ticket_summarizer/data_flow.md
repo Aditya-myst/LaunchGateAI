@@ -1,0 +1,1 @@
+Resume PDF -> Screening Backend -> External LLM -> Candidate Score -> ATS -> Recruiter Dashboard

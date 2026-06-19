@@ -1,0 +1,25 @@
+# secrets
+.env
+.env.local
+agent_config.yaml
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.db
+*.sqlite
+
+# node
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# system
+.DS_Store
+
+# local uploads
+data/uploads/

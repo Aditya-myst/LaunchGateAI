@@ -1,0 +1,16 @@
+{
+  "title": "HR Resume  Assistant",
+  "owner": "People Team",
+  "target_launch": "Next Tuesday ",
+  "description": "The People Team wants to launch an AI assistant that screens candidate resumes and ranks job applicants.\n\nThe assistant recommends whether a candidate should advance to recruiter screening.\n\nThe feature uses an external LLM and stores candidate summaries in the ATS.",
+  "artifact_names": [
+    "release_brief.md",
+    "sample_tickets.json",
+    "data_flow.md",
+    "app_diff.patch",
+    "deployment_config.yaml",
+    "test_plan.md",
+    "internal_ai_policy.md",
+    "vendor_llm_terms.md"
+  ]
+}

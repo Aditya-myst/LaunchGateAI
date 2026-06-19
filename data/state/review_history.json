@@ -1,0 +1,15 @@
+[
+  {
+    "id": "rev_ai_ticket_summarizer",
+    "title": "HR Resume  Assistant",
+    "owner": "People Team",
+    "target_launch": "Next Tuesday ",
+    "status": "completed",
+    "decision": "REQUEST_CHANGES",
+    "risk_score": 89,
+    "risk_level": "Critical",
+    "finding_count": 5,
+    "band_room_id": "319639bb-ef17-4421-aa17-5fd802de14eb",
+    "updated_at": "2026-06-18T15:52:56.996134Z"
+  }
+]

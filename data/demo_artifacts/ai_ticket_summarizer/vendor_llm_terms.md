@@ -1,0 +1,1 @@
+Prompts may be retained for abuse monitoring for up to 30 days unless enterprise opt-out is enabled.

@@ -1,0 +1,9 @@
+[
+  {
+    "candidate": "Alex Morgan",
+    "email": "alex.morgan@example.com",
+    "age": 42,
+    "gender": "female",
+    "resume": "10 years backend engineering experience"
+  }
+]

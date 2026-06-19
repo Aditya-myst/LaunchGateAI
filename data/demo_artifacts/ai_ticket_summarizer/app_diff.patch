@@ -1,0 +1,2 @@
++ response = llm_client.rank_candidate(candidate_profile)
++ ats.save_score(candidate_id=candidate.id, score=response.score)

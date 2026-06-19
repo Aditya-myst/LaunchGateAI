@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: launchgate-api
+    runtime: python
+    plan: free
+    rootDir: .
+    buildCommand: |
+      cd backend
+      pip install uv
+      uv sync
+      cd ..
+      python scripts/write_agent_config.py
+    startCommand: |
+      cd backend
+      uv run uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: BAND_REST_URL
+        value: https://app.band.ai
+      - key: BAND_WS_URL
+        value: wss://app.band.ai/api/v1/socket/websocket
+      - key: AIMLAPI_BASE_URL
+        value: https://api.aimlapi.com/v1
+
+  - type: worker
+    name: launchgate-agents
+    runtime: python
+    plan: free
+    rootDir: .
+    buildCommand: |
+      cd agents
+      pip install uv
+      uv sync
+      cd ..
+      python scripts/write_agent_config.py
+    startCommand: |
+      cd agents
+      uv run python run_all.py
+    envVars:
+      - key: BAND_REST_URL
+        value: https://app.band.ai
+      - key: BAND_WS_URL
+        value: wss://app.band.ai/api/v1/socket/websocket
+      - key: AIMLAPI_BASE_URL
+        value: https://api.aimlapi.com/v1

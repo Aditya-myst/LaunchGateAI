@@ -1,0 +1,1 @@
+Any AI system used for hiring, employment, candidate screening, or ranking requires fairness review, human review, and protected attribute controls.
