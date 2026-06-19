@@ -84,3 +84,196 @@ Enterprise AI releases are currently fragmented across:
 LaunchGate turns every release into a **collaborative agent review room**.
 
 ### Flow
+
+User submits release context
+↓
+LaunchGate creates review session
+↓
+Band initializes agent room
+↓
+Specialist agents collaborate
+↓
+Findings aggregated in dashboard
+↓
+Human makes final decision
+↓
+Audit dossier generated
+
+
+---
+
+# 🧱 System Architecture
+
+
+Next.js (Frontend SaaS Dashboard)
+↓
+FastAPI (Backend Orchestration Layer)
+↓
+LangGraph (Agent Workflow Engine)
+↓
+Band (Agent Collaboration Layer)
+↓
+Specialist AI Agents
+↓
+Decision Engine + Audit Dossier Generator
+
+
+---
+
+# 🤖 Agent System
+
+LaunchGate uses **bounded specialist agents** (not a single LLM).
+
+## 🧭 Coordinator Agent
+- Orchestrates workflow execution
+- Assigns tasks to agents
+
+## 🔐 Security Agent
+- Detects secrets exposure
+- Finds logging / data leaks
+- Evaluates API and vendor risk
+
+## 📜 Privacy & Compliance Agent
+- Detects PII exposure
+- Checks GDPR-style compliance
+- Evaluates fairness and disclosure
+
+## ⚙️ Engineering Agent
+- Validates deployment configuration
+- Checks rollout readiness
+
+## 🧪 QA Agent
+- Finds missing tests
+- Detects regression risks
+- Evaluates prompt injection safety
+
+## ⚖️ Decision Arbiter Agent
+- Aggregates all findings
+- Produces final verdict:
+  - ✅ APPROVE  
+  - ⚠️ REVIEW  
+  - ❌ REQUEST_CHANGES  
+
+---
+
+# 🔗 Band (Agent Collaboration Layer)
+
+Band is the **core execution system for multi-agent collaboration**.
+
+It is NOT a messaging tool.
+
+LaunchGate uses Band to:
+
+- Create shared agent review rooms  
+- Assign structured tasks to agents  
+- Enable real-time agent collaboration  
+- Exchange structured findings  
+- Maintain shared review state  
+- Trigger escalation to humans  
+- Generate audit-ready outputs  
+
+> **Band = collaboration runtime for enterprise AI governance**
+
+---
+
+# 🧠 LangGraph (Workflow Engine)
+
+Used for:
+
+- Structured agent execution graphs  
+- Controlled reasoning flows  
+- Multi-step decision pipelines  
+- State-aware agent execution  
+
+---
+
+# 🔧 LangChain (Tooling Layer)
+
+Used for:
+
+- Tool execution for agents  
+- Structured outputs  
+- External integrations  
+- Artifact parsing  
+- Risk extraction pipelines  
+
+---
+
+# ⚡ AI/ML API (Model Layer)
+
+- OpenAI-compatible model access  
+- Multi-model abstraction  
+- Fallback reasoning models  
+- Summarization + classification  
+
+---
+
+# 🧠 Example Demo Scenario
+
+## AI Ticket Summarizer
+
+A system that:
+- Processes support tickets  
+- Sends data to external LLM  
+- Stores results in CRM  
+
+### LaunchGate detects:
+
+- PII exposure in payload  
+- Debug logging enabled in production  
+- Missing injection testing  
+- Vendor data retention risks  
+- No rollback strategy  
+
+---
+
+### Final Decision
+
+
+❌ REQUEST_CHANGES
+
+
+---
+
+# 📊 Dynamic Risk Analysis
+
+| Use Case | Risk Type |
+|----------|-----------|
+| HR Systems | Bias & fairness |
+| Fintech | Financial compliance |
+| Healthcare | Privacy risks |
+| Internal Tools | Low risk |
+
+---
+
+# 🚀 Run Locally
+
+## Backend
+
+```bash
+cd backend
+uvicorn main:app --reload --port 8000
+Frontend
+cd frontend
+pnpm install
+pnpm dev
+Agents
+cd agents
+python run_agents.py
+🔐 Environment Variables
+BAND_API_KEY=your_key
+BAND_ROOM_ID=your_room
+
+OPENAI_API_KEY=your_key
+FASTAPI_BASE_URL=http://localhost:8000
+🏆 Why LaunchGate Wins
+Real enterprise AI governance problem
+True multi-agent architecture
+Strong Band-native collaboration
+LangGraph + LangChain credibility
+Human-in-the-loop decision system
+Audit-ready outputs
+Highly demoable failure scenarios
+⚡ Tagline
+
+Band is where agents collaborate. LaunchGate turns that collaboration into governed enterprise decisions.
