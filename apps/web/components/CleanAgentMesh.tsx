@@ -384,4 +384,3 @@ function AgentCard({ agent }: { agent: Agent }) {
     </div>
   );
 }
-
