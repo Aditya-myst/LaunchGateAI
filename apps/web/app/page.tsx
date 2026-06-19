@@ -31,7 +31,7 @@ export default function LandingPage() {
 
             <Reveal delay={0.08}>
               <h1 className="max-w-4xl text-6xl font-black leading-[0.92] tracking-[-0.08em] md:text-7xl xl:text-8xl">
-                Govern AI releases with agents.
+               Agents That Govern Every Release
               </h1>
             </Reveal>
 

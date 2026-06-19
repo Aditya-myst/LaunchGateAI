@@ -11,100 +11,109 @@ import {
   ShieldAlert,
   UserCheck,
   Workflow,
+  Sparkles,
+  LucideIcon,
 } from "lucide-react";
 
-const agents = [
+type Agent = {
+  name: string;
+  role: string;
+  result: string;
+  icon: LucideIcon;
+};
+
+const agents: Agent[] = [
   {
     name: "Coordinator",
     role: "opens room",
     result: "Band room created",
-    icon: <RadioTower size={20} />,
-    className: "left-[8%] top-[10%]",
+    icon: RadioTower,
   },
   {
     name: "Security",
     role: "checks data leakage",
     result: "SEC-001",
-    icon: <ShieldAlert size={20} />,
-    className: "right-[8%] top-[14%]",
+    icon: ShieldAlert,
   },
   {
     name: "Privacy",
     role: "classifies PII",
     result: "PRIV-001",
-    icon: <FileText size={20} />,
-    className: "left-[3%] top-[46%]",
+    icon: FileText,
   },
   {
     name: "Engineering",
     role: "verifies config",
     result: "ENG-001",
-    icon: <Workflow size={20} />,
-    className: "right-[4%] top-[48%]",
+    icon: Workflow,
   },
   {
     name: "QA",
     role: "checks tests",
     result: "QA-001",
-    icon: <CheckCircle2 size={20} />,
-    className: "left-[18%] bottom-[8%]",
+    icon: CheckCircle2,
   },
   {
     name: "Decision",
     role: "recommends action",
     result: "REQUEST_CHANGES",
-    icon: <UserCheck size={20} />,
-    className: "right-[18%] bottom-[8%]",
+    icon: UserCheck,
   },
 ];
 
 export function CleanAgentMesh() {
-  const root = useRef<HTMLDivElement | null>(null);
+  const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!root.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".mesh-agent",
-        { opacity: 0, y: 26, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.9,
-          stagger: 0.1,
-          ease: "power3.out",
-        }
-      );
+      gsap.from(".agent-card", {
+        opacity: 0,
+        y: 20,
+        scale: 0.96,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power3.out",
+      });
 
-      gsap.fromTo(
-        ".mesh-line",
-        { scaleX: 0, opacity: 0 },
-        {
-          scaleX: 1,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.09,
-          delay: 0.25,
-          ease: "power3.out",
-        }
-      );
+      gsap.from(".core-node", {
+        opacity: 0,
+        scale: 0.75,
+        duration: 1,
+        ease: "back.out(1.7)",
+      });
 
-      gsap.to(".mesh-agent", {
-        y: (i) => (i % 2 === 0 ? -10 : 10),
-        duration: 2.4,
+      gsap.to(".core-pulse", {
+        scale: 1.08,
+        opacity: 0.55,
         repeat: -1,
         yoyo: true,
-        stagger: 0.15,
+        duration: 2,
         ease: "sine.inOut",
       });
 
-      gsap.to(".mesh-core", {
-        scale: 1.04,
-        duration: 1.8,
-        repeat: -1,
-        yoyo: true,
+      gsap.fromTo(
+        ".flow-line",
+        { strokeDashoffset: 0 },
+        {
+          strokeDashoffset: -40,
+          repeat: -1,
+          duration: 1.4,
+          ease: "none",
+        }
+      );
+
+      const cards = gsap.utils.toArray<HTMLElement>(".agent-card");
+
+      gsap.to(cards, {
+        scale: 1.02,
+        duration: 1,
+        stagger: {
+          each: 0.2,
+          repeat: -1,
+          yoyo: true,
+        },
         ease: "sine.inOut",
       });
     }, root);
@@ -115,51 +124,264 @@ export function CleanAgentMesh() {
   return (
     <div
       ref={root}
-      className="relative h-[620px] overflow-hidden rounded-[2.5rem] border border-black/10 bg-white shadow-2xl"
+      className="
+        relative
+        h-[700px]
+        md:h-[520px]
+        w-full
+        overflow-hidden
+        rounded-[32px]
+        border
+        border-black/10
+        bg-[#faf8f5]
+        shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+      "
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(239,59,45,0.12),transparent_34%)]" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.08),transparent_40%)]" />
 
-      <div className="mesh-line absolute left-[18%] top-[23%] h-px w-[64%] origin-left rotate-[10deg] bg-red-400/60" />
-      <div className="mesh-line absolute left-[16%] top-[52%] h-px w-[68%] origin-left -rotate-[8deg] bg-black/20" />
-      <div className="mesh-line absolute left-[23%] top-[73%] h-px w-[54%] origin-left rotate-[14deg] bg-red-400/50" />
-      <div className="mesh-line absolute left-[35%] top-[20%] h-px w-[35%] origin-left rotate-90 bg-black/15" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-      <div className="mesh-core absolute left-1/2 top-1/2 z-10 flex h-44 w-44 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[2rem] bg-black text-center text-white shadow-2xl">
-        <Bot className="mb-3 text-red-400" size={34} />
-        <div className="text-[10px] font-black uppercase tracking-[0.22em] text-white/45">
-          Shared context
-        </div>
-        <div className="mt-1 text-2xl font-black">Band Room</div>
-      </div>
+      {/* Desktop connection lines */}
+      <svg
+        className="absolute inset-0 hidden md:block h-full w-full pointer-events-none"
+        viewBox="0 0 1000 520"
+        preserveAspectRatio="none"
+      >
+        <line
+          className="flow-line"
+          x1="500"
+          y1="260"
+          x2="220"
+          y2="90"
+          stroke="rgba(239,68,68,.25)"
+          strokeWidth="1.5"
+          strokeDasharray="5 5"
+        />
 
-      {agents.map((agent) => (
-        <div
-          key={agent.name}
-          className={`mesh-agent absolute z-20 w-60 rounded-[1.6rem] border border-black/10 bg-[#fffdf8] p-4 shadow-xl ${agent.className}`}
-        >
-          <div className="flex items-start gap-3">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-black to-red-600 text-white">
-              {agent.icon}
-            </div>
-            <div>
-              <div className="text-lg font-black">{agent.name}</div>
-              <div className="text-sm text-black/50">{agent.role}</div>
-              <div className="mt-3 inline-flex rounded-full bg-black px-3 py-1 text-xs font-black text-white">
-                {agent.result}
-              </div>
-            </div>
+        <line
+          className="flow-line"
+          x1="500"
+          y1="260"
+          x2="780"
+          y2="90"
+          stroke="rgba(239,68,68,.25)"
+          strokeWidth="1.5"
+          strokeDasharray="5 5"
+        />
+
+        <line
+          className="flow-line"
+          x1="500"
+          y1="260"
+          x2="190"
+          y2="220"
+          stroke="rgba(0,0,0,.15)"
+          strokeWidth="1.5"
+          strokeDasharray="5 5"
+        />
+
+        <line
+          className="flow-line"
+          x1="500"
+          y1="260"
+          x2="810"
+          y2="220"
+          stroke="rgba(0,0,0,.15)"
+          strokeWidth="1.5"
+          strokeDasharray="5 5"
+        />
+
+        <line
+          className="flow-line"
+          x1="500"
+          y1="260"
+          x2="280"
+          y2="390"
+          stroke="rgba(239,68,68,.25)"
+          strokeWidth="1.5"
+          strokeDasharray="5 5"
+        />
+
+        <line
+          className="flow-line"
+          x1="500"
+          y1="260"
+          x2="720"
+          y2="390"
+          stroke="rgba(239,68,68,.25)"
+          strokeWidth="1.5"
+          strokeDasharray="5 5"
+        />
+      </svg>
+
+      {/* Layout */}
+      <div
+        className="
+          relative
+          z-10
+          h-full
+          grid
+          grid-cols-1
+          md:grid-cols-3
+          md:grid-rows-3
+          place-items-center
+          gap-6
+          px-6
+          py-8
+        "
+      >
+        <AgentCard agent={agents[0]} />
+
+        <div className="hidden md:block" />
+
+        <AgentCard agent={agents[1]} />
+
+        <AgentCard agent={agents[2]} />
+
+        {/* Center */}
+        <div className="core-node relative order-first md:order-none">
+          <div className="core-pulse absolute -inset-8 rounded-full bg-red-500/10 blur-3xl" />
+
+          <div
+            className="
+              relative
+              flex
+              h-[160px]
+              w-[160px]
+              flex-col
+              items-center
+              justify-center
+              rounded-[32px]
+              bg-black
+              text-white
+              shadow-[0_25px_50px_rgba(0,0,0,0.25)]
+            "
+          >
+            <Bot
+              size={28}
+              className="text-red-400"
+            />
+
+            <Sparkles
+              size={12}
+              className="absolute right-10 top-10 text-cyan-400"
+            />
+
+            <span
+              className="
+                mt-3
+                text-[9px]
+                uppercase
+                tracking-[0.24em]
+                text-white/50
+              "
+            >
+              Shared Context
+            </span>
+
+            <h3 className="mt-1 text-xl font-black">
+              Band Room
+            </h3>
           </div>
         </div>
-      ))}
 
-      <div className="absolute bottom-6 left-6 right-6 z-20 rounded-[1.8rem] border border-black/10 bg-[#fffdf8]/95 p-5 backdrop-blur">
-        <div className="text-xs font-black uppercase tracking-[0.22em] text-red-600">
-          LaunchGate coordinates
-        </div>
-        <div className="mt-1 text-2xl font-black">
-          Six specialist agents. One accountable launch decision.
+        <AgentCard agent={agents[3]} />
+
+        <AgentCard agent={agents[4]} />
+
+        <div className="hidden md:block" />
+
+        <AgentCard agent={agents[5]} />
+      </div>
+
+      {/* Footer */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
+        <div
+          className="
+            rounded-full
+            border
+            border-black/10
+            bg-white/90
+            px-5
+            py-2
+            text-sm
+            font-semibold
+            text-black/70
+            backdrop-blur
+          "
+        >
+          6 Agents · Shared Context · 1 Decision
         </div>
       </div>
     </div>
   );
 }
+
+function AgentCard({ agent }: { agent: Agent }) {
+  const Icon = agent.icon;
+
+  return (
+    <div
+      className="
+        agent-card
+        w-full
+        max-w-[280px]
+        h-[92px]
+        rounded-[24px]
+        border
+        border-black/10
+        bg-white/90
+        backdrop-blur
+        px-4
+        py-3
+        shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+      "
+    >
+      <div className="flex items-center gap-4">
+        <div
+          className="
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-2xl
+            bg-black
+            text-white
+            shrink-0
+          "
+        >
+          <Icon size={20} />
+        </div>
+
+        <div className="min-w-0">
+          <div className="font-bold text-black">
+            {agent.name}
+          </div>
+
+          <div className="text-xs text-black/50">
+            {agent.role}
+          </div>
+
+          <div
+            className="
+              mt-2
+              inline-flex
+              rounded-full
+              bg-black
+              px-2.5
+              py-1
+              text-[10px]
+              font-bold
+              text-white
+            "
+          >
+            {agent.result}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
