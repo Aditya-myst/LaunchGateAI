@@ -1,7 +1,6 @@
-import os 
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 
 from app.api.routes_dossier import router as dossier_router
 from app.api.routes_demo import router as demo_router
@@ -10,20 +9,24 @@ from app.api.routes_intake import router as intake_router
 from app.api.routes_agent_events import router as agent_events_router
 from app.api.routes_band import router as band_router
 
-WEB_ORIGIN = os.getenv("WEB_ORIGIN", "http://localhost:3000")
+WEB_ORIGIN = os.getenv("WEB_ORIGIN")
 
-app=FastAPI(
+app = FastAPI(
     title="LaunchGate AI API",
     version="1.0.0",
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
+origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    WEB_ORIGIN,
-],
+]
+
+if WEB_ORIGIN:
+    origins.append(WEB_ORIGIN)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
