@@ -1,59 +1,96 @@
 # 🚀 LaunchGate AI
 
-![LaunchGate UI](./assets/launchgate-ui.png)
+> **Band-powered multi-agent release governance system for enterprise AI launches**
 
-> **Agents that govern every AI release.**
+![Uploading Screenshot 2026-06-19 151629.png…]()
 
-LaunchGate AI is a **Band-powered AI release governance system** for enterprise teams shipping high-risk AI features.
-
-It transforms software deployment into a **multi-agent review process with human-in-the-loop approval and audit-ready outputs**.
 
 ---
 
-# 🧠 What is LaunchGate?
+# 🧱 Tech Stack & Frameworks
 
-LaunchGate is a SaaS command center where AI releases are reviewed like real engineering decisions.
+## 🎨 Frontend
 
-Instead of relying on scattered reviews across Slack, Jira, and meetings, LaunchGate centralizes everything into a structured **agent collaboration system powered by Band**.
-
-Each release is analyzed by specialized agents that simulate real enterprise roles:
-
-- Security Engineer  
-- QA Engineer  
-- Compliance Officer  
-- Platform Engineer  
-- Risk & Decision Reviewer  
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-0F172A?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=black)
 
 ---
 
-# 🎯 Problem
+## ⚙️ Backend
+
+![FastAPI](https://img.shields.io/badge/FastAPI-05998B?style=for-the-badge&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+---
+
+## 🤖 AI / Agent Frameworks
+
+![LangGraph](https://img.shields.io/badge/LangGraph-7C3AED?style=for-the-badge)
+![LangChain](https://img.shields.io/badge/LangChain-000000?style=for-the-badge)
+![AI/ML API](https://img.shields.io/badge/AI%2FML%20API-FF6B6B?style=for-the-badge)
+
+---
+
+## 🔗 Agent Collaboration Layer
+
+![Band](https://img.shields.io/badge/Band-Agent%20Collaboration-2563EB?style=for-the-badge&logo=googlechat&logoColor=white)
+
+---
+
+## 🧪 Infrastructure & DevOps
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Render](https://img.shields.io/badge/Render-000000?style=for-the-badge&logo=render&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+
+---
+
+# 🚀 LaunchGate AI
+
+LaunchGate AI is a **SaaS command center for AI release governance**.
+
+It transforms every software release into a **multi-agent review workflow**, where specialized AI agents collaborate through Band to evaluate risk, generate findings, and produce audit-ready decisions.
+
+---
+
+# 🧠 Core Idea
 
 Modern AI releases are:
 
 - High-risk  
-- Cross-functional  
+- Multi-stakeholder  
 - Hard to audit  
 
-But today, decisions are still made across fragmented tools:
+LaunchGate solves this by introducing a **structured AI governance layer** where:
 
-- Slack threads  
+> Multiple specialized agents simulate an enterprise review committee before deployment.
+
+---
+
+# ⚠️ Problem
+
+Enterprise AI releases are currently fragmented across:
+
+- Slack discussions  
 - Jira tickets  
-- Google Docs  
-- Meetings  
+- Engineering docs  
+- Manual approval meetings  
 
 ### This leads to:
 
-- Slow approvals  
+- Slow release cycles  
 - Missing accountability  
-- No structured audit trail  
-- Inconsistent risk evaluation  
+- No audit trail  
+- Inconsistent risk decisions  
 
 ---
 
 # 💡 Solution
 
-LaunchGate introduces a **governed AI release workflow system**.
+LaunchGate turns every release into a **collaborative agent review room**.
 
-Instead of isolated checks, every release becomes a **collaborative agent review room**.
-
-### Flow:
+### Flow
