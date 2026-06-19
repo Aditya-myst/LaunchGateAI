@@ -23,3 +23,6 @@ coverage/
 
 # local uploads
 data/uploads/
+
+# Local Netlify folder
+.netlify
