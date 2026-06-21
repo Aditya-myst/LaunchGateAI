@@ -1,6 +1,10 @@
-# 🚀 LaunchGate AI
+
+>  Note:Kindly wait for 2 min after opening the dashboard backend takes time to start.
+---
+> # 🚀 LaunchGate AI
 
 > **Band-powered multi-agent release governance system for enterprise AI launches**
+
 
 <img width="1882" height="888" alt="Screenshot 2026-06-19 151629" src="https://github.com/user-attachments/assets/7eadbb4d-0a4d-4727-b17e-99f76346ec1f" />
 
